@@ -1,0 +1,9 @@
+import Link from "next/link"
+export default function F1(){
+    return (<>
+    <h1>f1 page</h1>
+    <Link href="/f1/f2">Go to F2</Link>
+    <Link href="/f3">Go to F3</Link>
+    <Link href="/f4">Go to Intercepted F4</Link>
+    </>)
+}
