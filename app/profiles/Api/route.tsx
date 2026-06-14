@@ -1,7 +1,11 @@
-
-import { headers } from "next/headers";
-export async function GET(req: Request){
- const headlist= await headers()
- console.log(headlist.get('Authorization'))
- return new Response('hello header')
+import { cookies } from "next/headers";
+export async function GET() {
+    const cookielist= await cookies()
+    cookielist.set('theme','white')
+  return new Response("<h2>hello api</h2>", {
+    headers: {
+      "Content-Type": "text/html",
+     // "Set-Cookie": "theme=dark; Path=/",
+    },
+  });
 }
