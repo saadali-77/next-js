@@ -3,18 +3,13 @@ import { Comment } from "./data";
 export async function GET(){
     return Response.json(Comment)
 }
-export async function POST(request: Request){
-   const comm= await request.json()
-   const newComment={
-    id:Comment.length +1,
-    name: comm.name
-   }
-   Comment.push(newComment)
-   return new Response(JSON.stringify(newComment),{
-    headers:{
-        "Content-Type": "application/json",
-    
-    },
-    status: 201
-   })
+export async function POST (req:Request){
+    const comm= await req.json()
+    const newcomment= {
+        id:Comment.length + 1,
+        name: comm.name
+    }
+    Comment.push(newcomment)
+    return Response.json(newcomment,{status: 201})
+
 }
