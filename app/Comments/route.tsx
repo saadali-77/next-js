@@ -1,7 +1,12 @@
 import { json } from "stream/consumers";
 import { Comment } from "./data";
-export async function GET(){
-    return Response.json(Comment)
+import { NextRequest } from "next/server";
+export async function GET(req:NextRequest){
+  const searchparams=  req.nextUrl.searchParams
+  const query= searchparams.get('query')
+ const filtercomment= query? Comment.filter((com)=>com.name.includes(query)): Comment
+
+    return Response.json(filtercomment)
 }
 export async function POST (req:Request){
     const comm= await req.json()
