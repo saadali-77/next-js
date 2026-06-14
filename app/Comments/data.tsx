@@ -9,6 +9,13 @@ export const Comment= [{
 {
     name:'umair',
     id:3
+},{
+    name:'saaaddd',
+    id:4
+},
+{
+    name:'ali',
+    id:5
 }
 
 ]

@@ -18,4 +18,25 @@ export async function PATCH(req:Request,{params}:{
     return Response.json(Comment[commentIndex])
 
 }
+export async function DELETE(
+  request: Request,
+  context: { params: { id: string } }
+) {
+  const { id } = context.params;
 
+  const commentIndex = Comment.findIndex(
+    (com) => com.id === parseInt(id)
+  );
+if (commentIndex === -1) {
+    return Response.json(
+      { message: "Comment not found" },
+      { status: 404 }
+    );
+  }
+ 
+  
+const deletecom= Comment[commentIndex]
+  Comment.splice(commentIndex, 1);
+
+  return Response.json(deletecom)
+}
