@@ -20,9 +20,9 @@ export async function PATCH(req:Request,{params}:{
 }
 export async function DELETE(
   request: Request,
-  context: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
-  const { id } = context.params;
+  const { id } = await params;
 
   const commentIndex = Comment.findIndex(
     (com) => com.id === parseInt(id)
